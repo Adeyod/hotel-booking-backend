@@ -26,14 +26,14 @@ app.use(
 
 app.use(helmet());
 
-app.use('/', (req, res) => {
-  res.send('Welcome to the new hotel application...');
-});
-
-app.use('api/auth', authRoute);
+app.use('/api/auth', authRoute);
 app.use('api/bookings', bookingRoute);
 app.use('api/rooms', roomRoute);
 app.use('api/users', userRoute);
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the new hotel application...');
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
